@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=20mm,bindingoffset=0cm]{geometry}
+\usepackage{style}
+
+
+\newcommand{\Href}[2]{\hyperref[#2]{#1~\ref{#2}}}
+
+% \relpenalty=10000
+% \binoppenalty=10000
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+% \renewcommand{\proofname}{\textbf{Доказательство}}
+\linespread{0.9}
+ 
+\newtheorem{lem}{Лемма}[section]
+\newtheorem{prop}{Утверждение}[section]
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{cor}{Следствие}[section]
+
+% \theoremstyle{definition}
+\newtheorem{defin}{Определение}
+% \newtheorem{rem}[defin*]{Замечание}
+% \newtheorem{exl}[defin*]{Пример}
+
+\numberwithin{defin}{subsection}
+
+\begin{document}
+
+\include{./tex/measure}
+
+\end{document}

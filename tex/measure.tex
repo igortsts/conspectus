@@ -1,0 +1,100 @@
+\section{Мера и интеграл}
+
+Чтобы научиться интегрировать функции, значения которых можно складывать друг с другом и умножать на числа, нужно уметь измерять подмножества их области определения.
+
+\subsection{Алгебры, кольца и полукольца}
+Пусть $X$ --- множество. 
+\begin{defin}
+	Семейство подмножеств $\mathcal{A}\subset 2^X$ будем называть \textit{алгеброй подмножеств множества $X$} или \textit{алгеброй на $X$}, если
+		\begin{enumerate}
+			\item $\varnothing\in\mathcal{A}$;
+			\item $A\in\mathcal{A}\Rightarrow\overline{A}\in\mathcal{A}$;
+			\item $A,B\in\mathcal{A}\Rightarrow A\cup B\in\mathcal{A}$.
+		\end{enumerate}
+\end{defin}
+Как алгебраическая структура алгебра множеств --- это ассоциативная алгебра с единицей, где роль единицы играет всё $X$, умножения --- пересечение множеств, а сложения --- симметрическая разность $A\triangle B=(A\setminus B)\cup(B\setminus A)$.
+
+Вследствие замкнутости относительно операций дополнения и объединения алгебра также замкнута относительно операции пересечения множеств, что элементарно следует из правил де Моргана: $A\cap B=\overline{\overline{A}\cup\overline{B}}$. Из индукционнных соображений тривиально следует замкнутость относительно конечных объединений. Из этого, однако, не следует замкнутость относительно счётных объединений.
+\begin{defin}
+	Если в предыдущем определении требование (3) заменить на
+		\begin{enumerate}
+			\item $\{A_i\}_{i\in\NN}\subset\mathcal{A}\Rightarrow \bigcup_{i\in\NN} A_i\in\mathcal{A}$,
+		\end{enumerate}
+	то $\mathcal{A}$ --- \textit{$\sigma$-алгебра подмножеств множества $X$}.
+\end{defin}
+
+Понятие алгебры достаточно для определения измеримого пространства. 
+\begin{defin}
+	Пару $(X,\mathcal{A})$, где $\mathcal{A}$ --- алгебра подмножеств $X$, будем называть \textit{измеримым пространством}.
+\end{defin}
+\begin{defin}
+	Пусть $(X,\mathcal{A})$ --- измеримое пространство, $Y\subset X$. Тогда на $Y$ индуцируется структура измеримого пространства с алгеброй множеств $\mathcal{B}=\{Y\cap A|A\in\mathcal{A}\}$.
+\end{defin}
+
+Обычно для определения меры на конкретном измеримом пространстве её не задают на всей алгебре подмножеств $X$, а на более бедном, но обозримом семействе подмножеств множества $X$, например, кольце или полукольце множеств.
+\begin{defin}
+	Семейство подмножеств $\mathcal{R}\subset 2^X$ --- \textit{кольцо подмножеств множества $X$} или \textit{кольцо на $X$}, если
+	\begin{enumerate}
+		\item $A,B\in\mathcal{R}\Rightarrow A\cap B\in\mathcal{R}$;
+		\item $A,B\in\mathcal{R}\Rightarrow A\triangle B\in\mathcal{R}$.
+	\end{enumerate}
+\end{defin}
+Отметим, что $A\setminus B=A\triangle(A\cap B)$, откуда следует, что всякая алгебра является кольцом. Обратное верно тогда и только тогда, когда $X\in\mathcal{A}$.
+
+Приведём примеры колец и алгебр множеств.
+\begin{enumerate}
+	\item Семейства $\{\varnothing, X\}$ и $2^X$ являются $\sigma$-алгебрами на $X$.
+	\item Пусть $X=\NN$. Семейство конечных подмножеств множества $X$ образует кольцо на $X$, но не алгебру.
+	\item Пусть $X=\RR$. Конечные объединения промежутков вида $(a,b)$, $(a,b]$, $[a,b)$ и $[a,b]$ образует алгебру.
+\end{enumerate}
+
+\begin{prop}
+	Пусть $\{\mathcal{R}_{\alpha}\}_{\alpha\in I}$ --- набор колец подмножеств множества $X$. Тогда семейство подмножеств $\mathcal{R}=\displaystyle\cap_{\alpha\in I} R_{\alpha}$ само является кольцом подмножеств множества $X$.
+\end{prop}
+Это утверждение обеспечивает существование наименьшего кольца подмножеств множества $X$, содержащее данное семейство подмножеств $\mathcal{M}\subset 2^X$.
+\begin{defin}
+	Кольцо множеств $\mathcal{R}(\mathcal{M})=\displaystyle\cap_{\mathcal{M}\subset\mathcal{F}\subset 2^X} \mathcal{F}$, где $\mathcal{F}$ --- кольцо подмножеств множества $X$, будем называть \textit{кольцом подмножеств множества $X$, порождённым семейством $Y$}. 
+\end{defin}
+Из определения ясно, что данное семейство $\mathcal{F}$ подмножеств множества $X$ порождает единственное кольцо, которое его содержит.
+\begin{defin}
+	Пусть $X$ --- топологическое пространство. 
+\end{defin}
+
+Полукольцо удовлетворяет более слабому условию, чем (2) в определении кольца.
+\begin{defin}
+	Семейство подмножеств $\mathcal{H}\subset 2^X$ --- \textit{полукольцо подмножеств множества $X$}, если
+	\begin{enumerate}
+		\item $A,B\in\mathcal{H}\Rightarrow A\cap B\in\mathcal{H}$;
+		\item $A,B\in\mathcal{H}\Rightarrow\exists\ A_1,\ldots,A_n\in\mathcal{H}\such \forall\ i\neq j\ A_i\cap A_j=\varnothing,\ A\setminus B=A_1\cup\ldots\cup A_n$;
+	\end{enumerate}
+\end{defin}
+Всякое кольцо, очевидно, является полукольцом.
+
+\subsection{Мера}
+\begin{defin}
+	Пусть $\mathcal{H}$ --- полукольцо на $X$, а $(Y,+)$ --- группа. Отображение $f\colon(X,\mathcal{H})\to(Y,+)$ такое, что $f(A\cup B)=f(A)+f(B)$ для всяких неперескающихся $A,B\in\mathcal{H}$, назовём \textit{конечно-аддитивным}, или просто \textit{аддитивным}.
+\end{defin}
+\begin{defin}
+	Пусть $(X,\mathcal{A})$ --- измеримое пространство. \textit{Мера} на $X$ --- это аддитивная функция $\mu\colon(X,\mathcal{A})\to\RR$. Множества $A\in\mathcal{A}$ назовём \textit{$\mathcal{A}$-измеримыми} или просто \textit{измеримыми}, если ясно, какая на $X$ определена алгебра.
+\end{defin}
+\begin{defin}
+	Тройка $(X,\mathcal{A},\mu)$, где $\mu$ --- мера на измеримом пространстве $(X,\mathcal{A})$, --- \textit{пространство с мерой}.
+\end{defin}
+\begin{defin}
+	Пусть $(X,\mathcal{A})$, $(Y,\mathcal{B})$ --- измеримые пространства. Будем говорить, что $f\colon(X,\mathcal{A})\to(Y,\mathcal{B})$ --- \textit{$\mathcal{A}/\mathcal{B}$-измеримое отображение}, если для всякого $\mathcal{B}$-измеримого множества $B\subset Y$ его прообраз $f^{-1}(B)\subset X$ $\mathcal{A}$-измерим. 
+\end{defin}
+Смысл определения заключается в том, что если $(X,\mathcal{A},\mu)$ --- пространство с мерой, то измеримое отображение $f\colon(X,\mathcal{A},\mu)\to(Y,\mathcal{B})$ индуцирует меру $\tilde{\mu}$ на $Y$, определяемую на измеримых множествах $B\subset Y$ как $\tilde{\mu}(B)=\mu(f^{-1}(B))$.
+	\begin{equation*}
+		\begin{tikzcd}
+			\mathcal{A} \arrow{r}{\mu} \arrow{d}{f} & \RR \\                       
+			\mathcal{B} \arrow{ru}{\tilde{\mu}} & 
+		\end{tikzcd}
+	\end{equation*}
+Измеримые пространства вместе с измеримыми отображениями между ними в качестве морфизмов образуют \textit{категорию}.
+
+\subsection{Продолжение меры}
+
+\subsection{Интеграл}
+\begin{defin}
+	Функция $f\colon X\to Y$ \textit{простая}, если $f(X)$ конечно.
+\end{defin}
