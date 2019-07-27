@@ -3,6 +3,10 @@
 \usepackage{style}
 
 
+\usepackage{color}
+\usepackage{xcolor}
+\newcommand{\TODO}[1]{{\color{magenta}#1}}
+
 \newcommand{\Href}[2]{\hyperref[#2]{#1~\ref{#2}}}
 
 % \relpenalty=10000
@@ -28,6 +32,8 @@
 
 \begin{document}
 
+\include{./tex/category}
+\include{./tex/topology}
 \include{./tex/measure}
 
 \end{document}
