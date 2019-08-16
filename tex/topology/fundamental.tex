@@ -1,0 +1,105 @@
+\subsection{Фундаментальная группа}
+\begin{defin}
+	\textit{Путь} в пространстве $X$ --- это непрерывное отображение $I\to X$.
+\end{defin}
+В пространстве с отмеченной точкой $(X,x_0)$ все пути начинаются в точке $x_0$. Если путь $f\colon I\to X$ заканчивается в точке $x=f(1)$, а путь $g\colon I\to X$ в ней начинается, то есть $g(0)=x$, то можно определить \textit{произведение путей} $fg\colon I\to X$ как $(fg)(t)=f(2t)$ при $0\leqslant t<1/2$ и $(fg)(t)=g(2t-1)$ при $1/2\leqslant t\leqslant 1$. Произведение корректно определено в силу леммы о склейке.
+
+Можно убедиться, что такое умножение ассоциативно, то есть если определено произведение $(fg)h$, то определено и $f(gh)$, причём $(fg)h=f(gh)$.
+
+\begin{defin}
+	\textit{Петля} в пространстве $X$ --- это путь $f\colon I\to X$ такой, что $f(0)=f(1)$.
+\end{defin}
+Петля --- то же, что и непрерывное отображение окружности $S^1\to X$.
+
+Пространство петель $C(S^1,X)$ в $X$ будем обозначать $\Omega X$, если $(X,x_0)$ --- пространство с отмеченной точкой, то $\Omega(X,x_0)$. В последнем все петли проходят через точку $x_0$. Постоянную петлю будем обозначать $\varepsilon(t)=x_0$.
+
+На $\Omega(X,x_0)$ можно ввести умножение так, как мы это сделали для двух путей, один из которых заканчиватся, а второй начинается в той же точке: если $\varphi,\psi\colon I\to X$ --- петли, то произведение петель определяется как
+	\begin{equation}
+		(\varphi\psi)(t)=
+		\begin{cases}
+			\varphi(2t), 0\leqslant t<1/2\\
+			\psi(2t-1), 1/2\leqslant t\leqslant 1.
+		\end{cases}
+	\end{equation}
+Обратная петля $\overline{\varphi}$ к петле $\varphi$ вводится как $\overline{\varphi}=\varphi(1-t)$. Эти операции определяют структуру группы на гомотопических классах $[(S^1,s_0),(X,x_0)]$. Чтобы убедиться в этом, проверим, что умножение и взятие обратного элемента корректно определено на классах эквивалентности, то есть
+	\begin{enumerate}
+		\item если $\varphi\simeq\varphi'$, $\psi\simeq\psi'$, то $\varphi\psi\simeq\varphi'\psi'$;
+		\item если $\varphi\simeq\varphi'$, то $\overline{\varphi}\simeq\overline{\varphi'}$;
+		\item для всякой петли $\varphi$ верно $\varphi\overline{\varphi}\simeq\overline{\varphi}\varphi\simeq\varepsilon$;
+		\item для всякой петли $\varphi$ верно $\varepsilon\varphi\simeq\varphi\varepsilon$.
+	\end{enumerate}
+Итак, мы доказали, что $[(S^1,s_0),(X,x_0)]$ --- группа. Эта группа называется \textit{фундаментальной группой пространства} $(X,x_0)$ и обозначается $\pi_1(X,x_0)$ или просто $\pi_1(X)$, если ясно, о какой отмеченной точке идёт речь.
+\begin{prop}
+	Если $X$ линейно связно, то для $\pi_1(X,x_0)\cong\pi_1(X,x_1)$ для всяких $x_0,x_1\in X$.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+\begin{prop}
+	Фундаментальная группа $\pi_1$ также является гомотопически инвариантным ковариантным функтором $\mathcal{T}op\to\mathcal{G}r$.
+\end{prop}
+\begin{proof}
+Каждому отображению $f\colon(X,x_0)\to(Y,y_0)$ ставится в соответствие гомоморфизм групп $\pi_1(f)=f_*\colon\pi_1(X,x_0)\to\pi_1(Y,y_0)$, $f_*([\varphi])=[f\circ\varphi]$. Убедимся. что это действительно гомоморфизм. Пусть $[\varphi],[\psi]\in\pi_1(X)$, тогда
+	\begin{equation*}
+		f^*([\varphi][\psi])=[f\circ(\varphi\psi)]=[(f\circ\varphi)(f\circ\psi)]=[f\circ\varphi][f\circ\psi]=f^*([\varphi])f^*([\psi]).
+	\end{equation*}
+Несложно убедиться, что это в самом деле функтор. В самом деле, пусть $f\colon X\to Y$, $g\colon Y\to Z$ --- отображения, сохраняющие отмеченные точки, тогда
+	\begin{equation*}
+		(g\circ f)^*([\varphi])=[(g\circ f)\circ\varphi]=[g\circ(f\circ\varphi)]=g^*([f\circ\varphi])=(g^*\circ f^{\circ})([\varphi]).
+	\end{equation*}
+Гомотопическая инвариантность означает, что если $f,g\colon X\to Y$ и $f\simeq g$, то $f^*=g^*$:
+	\begin{equation*}
+		f^*([\varphi])=[f\circ\varphi]=[g\circ\varphi]=g^*([\varphi]).
+	\end{equation*}
+\end{proof}
+\begin{cor}
+	Если $f\colon X\to Y$ --- гомотопическая эквивалентность, то $f^*\colon\pi_1(X)\to\pi_1(Y)$ --- изоморфизм.
+\end{cor}
+\begin{cor}
+	Если $X$ стягиваемо, то $\pi_1(X)=0$.
+\end{cor}
+Так, фундаментальная группа $\pi_1(\RR^n)=\pi_1(D^n)=0$
+\begin{prop}
+	$\pi_1(S^n)=0$ при $n\geqslant 2$.
+\end{prop}
+\begin{proof}
+	Следствие теоремы о клеточной аппроксимации.
+\end{proof}
+\begin{theorem}
+	$\pi_1(S^1)=\ZZ$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+Перейдём к классическим результатам, которые элементарно получаются из свойств фундаментальной группы.
+\begin{theorem}[Брауэр, 1909]
+	Если $f\colon D^n\to D^n$ непрерывно, то существует $x\in D^n$ такой, что $x=f(x)$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+\begin{theorem}(Борсук, Улам,)
+
+\end{theorem}
+\begin{theorem}(основная теорема алгебры)
+
+\end{theorem}
+Обсудим ещё некоторые свойства фундаментальной группы как функтора.
+
+
+\subsection{Топологические группы, $H$-группы и $H$-когруппы}
+В $H$-группах умножение определено с точностью до гомотопии
+\begin{defin}
+	Будем говорить, что топологическое пространство $X$ --- \textit{$H$-группа}, если определены отображения $\mu\colon X\times X\to X$, $i\colon X\to X$ и постоянное отображение $e\colon X\to X$ такие, что
+
+\end{defin}
+
+\subsection{Теорема Зейферта-ван Кампена}
+\TODO{свободное произведение}
+
+\TODO{категорный смысл --- сохранение пушаутов}
+
+\subsection{Фундаментальная группа клеточного пространства. Классификация двумерных поверхностей}
+
+\subsection{Накрытия}
+\TODO{свойство поднятия пути и гомотопии, универсальное накрытие, классификация накрытий, теорема Нильсена-Шраера}

@@ -1,0 +1,98 @@
+\section{Выпуклость}
+Явления выпуклости служат нулевым приближением в задачах оптимизации, потому что минимум выпуклой функции, заданной на выпуклом множестве, всегда существует и единственнен.
+
+Выпуклую геометрию пронизывают идеи двойственности, я постараюсь явно указывать на симметрию везде, где это возможно.
+
+Далее $X$ обозначает произвольное линейное пространство над $\RR$. Действие линейного функционала $p\in X^*$ будем обозначать через $\langle p,x\rangle$.
+
+Пространство $\RR^n$ рассматривается вместе со скалярным произведением
+	\begin{equation}
+		\langle x,y\rangle =\sum_{i=1}^n x_iy_i,
+	\end{equation}
+где $x_i$, $y_i$, $i=\overline{1,n}$ --- компоненты векторов в стандартном базисе в $\RR^n$.
+
+\subsection{Выпуклые множества и функции}
+\begin{defin}
+	Пусть $A,B\subset X$, $t\in\RR$. Определим
+		\begin{eqnarray}
+			A+B&=&\{x+y|x\in X, y\in B\},\\
+			tA&=&\{tx|x\in X\}.
+		\end{eqnarray}
+\end{defin}
+\begin{defin}
+	Множество $A$ центрально-симметрично, если $(-A)=A$.
+\end{defin}
+\begin{defin}
+	Множество $A\subset X$ выпукло, если для всякой пары точек $x,y\in A$ и $\lambda\in(0,1)$
+	\begin{equation}
+		\lambda x+(1-\lambda)y\in A.
+	\end{equation}
+\end{defin}
+Эквивалентно, $A$ выпукло, если $\lambda A+(1-\lambda) A\subset A$. Геометрически, множество $A$ выпукло, если со всякой парой точек, входящих в $A$, оно содержит и отрезок, их соединяющий.
+
+Если $X$ --- топологическое векторное пространство, то \textit{телом} будем называть любой компакт с непустой внутренностью. Мы будем изучать выпуклые тела в $X$.
+
+Самый важный пример выпуклого множества: если $||\cdot||$ --- норма на линейном пространстве $X$, то единичный шар $B^{||\cdot||}_1(0)\subset X$ в этой норме выпуклый. В самом деле, для $x,y\in X$ таких, что $||x||,||y||\leqslant 1$, и $\lambda\in(0,1)$
+		\begin{equation*}
+			||\lambda x+(1-\lambda)y||\leqslant |\lambda|||x||+|1-\lambda|||y||\leqslant 1.
+		\end{equation*}
+Простейшие свойства:
+\begin{enumerate}
+	\item если $A,B\subset X$ выпуклы, то $A+B$ и $tA$ выпуклы при произвольных $t\in\RR$.
+	\item если $A\subset X$ и $B\subset Y$ выпуклы, то $A\times B\subset X\times Y$ выпукло.
+	\item если $A_{\alpha}\subset X$ выпуклы при всех $\alpha\in\mathcal{A}$, то $\bigcap_{\alpha\in\mathcal{A}} A_{\alpha}$ выпукло.
+\end{enumerate}
+\begin{defin}
+	Пусть подмножество $A\subset X$ выпуклое. Функция $f\colon A\to\RR$ выпуклая, если её надграфик $\epi(f)=\{(x,y)\in A\times\RR| \ x\in A,\ y\geqslant f(x)\}$ --- выпуклое множество.
+\end{defin}
+
+\subsection{Функционал Минковского и норма}
+Нормы на $\RR^n$ двойственны центрально-симметричным выпуклым телам в $\RR^n$: каждой норме можно поставить в соответствие единичный шар в этой норме, каждому центрально-симметричному выпуклому телу можно поставить в соответствие его функционал Минковского, являющийся нормой.
+\begin{defin}
+	Пусть $A\subset X$. Определим \textit{функционал Минковского} $\mu_A\colon X\to\RR$ как
+		\begin{equation}
+			\mu_A(x)=\inf\{t>0|x\in tA\}.
+		\end{equation}
+\end{defin}
+\begin{prop}\label{prop:mink}
+	Функционал Минковского $\mu_A(\cdot)$ произвольного множества $A\subset\RR^n$ положительно однородный, то есть $\mu_A(\lambda x)=\lambda\mu_A(x)$ для $\lambda>0$. Если $A$ ограничено и $0\in\int A$, то $\mu_A(x)>0$ для $x\neq 0$ и $\mu_A(0)=0$. Если $A$ выпукло, то выполняется неравенство треугольника: $\mu_A(x+y)\leqslant\mu_A(x)+\mu_A(y)$.
+\end{prop}
+\begin{prop}
+	Пусть $A\subset\RR^n$ --- выпуклое центрально-симмметричное тело. Тогда $\mu_A(\cdot)$ --- норма на $\RR^n$.
+\end{prop}
+\begin{proof}
+	Элементарное следствие предложения~\ref{prop:mink}.
+\end{proof}
+
+\subsection{Преобразование Лежандра}
+\begin{defin}
+	Пусть $f\colon X\to\RR$ --- некоторая функция. \textit{Преобразованием Лежандра} функции $f$ называют функцию $f^*\colon X\to\RR$, определённую в каждой точке как
+		\begin{equation}
+			f^*(y)=\sup_{x\in X}(\langle x,y\rangle-f(x)).
+		\end{equation}
+\end{defin}
+
+\subsection{Опорная функция}
+\begin{defin}
+	Пусть $A\subset X$. \textit{Опорной функцией} множества $A$ называется функция $s_A\colon X^*\to\RR$, определённую в каждой точке как
+		\begin{equation}
+			s_A(p)=\sup\{\langle p,x\rangle|\ x\in A\}.
+		\end{equation}
+\end{defin}
+
+\subsection{Двойственность Минковского}
+\begin{defin}
+	Пусть $A\subset\RR^n$. \textit{Полярой} множества $A$ называется множество
+		\begin{equation}
+			A^{\circ}=\{y\in\RR^n|\forall x\in A\ \langle x,y\rangle\leqslant 1\}.
+		\end{equation}
+\end{defin}
+\begin{prop}
+	Пусть $K\subset\RR^n$ --- выпуклое тело, содержащее 0 в своей внутренности. Тогда
+		\begin{equation}
+			\mu_A(x)=s_{A^{\circ}}(x).
+		\end{equation}
+\end{prop}
+
+\subsection{Расстояние Банаха-Мазура и расстояние Хаусдорфа}
+%как из одного расстояния можно получить другое?

@@ -1,12 +1,19 @@
 \documentclass[12pt]{amsart}
 \usepackage[left=10mm,right=10mm,top=20mm,bottom=20mm,bindingoffset=0cm]{geometry}
 \usepackage{style}
+\usepackage{cite}
 \usepackage{color}
 \usepackage{xcolor}
 \newcommand{\TODO}[1]{{\color{magenta}#1}}
+\usepackage{hyperref}
+\usepackage{pdfpages}
 
-\newcommand{\Href}[2]{\hyperref[#2]{#1~\ref{#2}}}
-
+\hypersetup{
+	colorlinks   = true, %Colours links instead of ugly boxes
+	urlcolor     = blue, %Colour for external hyperlinks
+	linkcolor    = blue, %Colour of internal links
+	citecolor    = red %Colour of citations
+}
 % \relpenalty=10000
 % \binoppenalty=10000
 
@@ -27,12 +34,20 @@
 % \newtheorem{rem}[defin*]{Замечание}
 % \newtheorem{exl}[defin*]{Пример}
 
-\numberwithin{defin}{subsection}
+\numberwithin{defin}{section}
 
 \begin{document}
 
-\include{./tex/category}
-\include{./tex/topology}
-\include{./tex/measure}
+\tableofcontents
+\newpage
+
+% \include{./tex/category}
+\include{./tex/topology/general}
+\include{./tex/topology/operations}
+\include{./tex/topology/homotopy}
+\include{./tex/topology/fundamental}
+% \include{./tex/measure}
+% \include{./tex/convex}
+
 
 \end{document}
